@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../src/jquery.countdown360.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script>
+		function redirectFunction() {
+			window.location = "panel2.html";
+		}
+		</script>
+		
+	</head>
+
+	<body>
+		<div id="container">
+			<div id="countdown"></div>
+			<script type="text/javascript" charset="utf-8">
+
+		 	var countdown =  $("#countdown").countdown360({
+       	 	radius      : 60,
+         	seconds     : 10,
+         	fontColor   : '#FFFFFF',
+         	autostart   : false,
+			onComplete : function() {window.location = "panel2.html"}
+         	<!--onComplete  : function() { console.log('done') } -->
+		   });
+			countdown.start();
+			console.log('countdown360 ',countdown);
+		 	
+		  </script>
+		</div>
+		
+	</body>
+</html>
