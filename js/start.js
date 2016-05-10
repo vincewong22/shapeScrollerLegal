@@ -3,59 +3,7 @@ var level_shapes = [[], [], []], user_shapes = [[], [], []];
 var level=1;
 
 $(document).ready(function () {
-    level = localStorage.getItem("level",level);
-    if(level == null){
-        localStorage.setItem("level",1);
-    }
-    $("#levelCounter").text("Level: "+level);
-    var difficulty = level;
-    generateBoard(level);
-//Set all elements with init id with block class drag enabled
-    init();
-//button that checks the
-    $( "#click" ).click(function() {
-        getListContent();
-    });
-
-    $( "#reset" ).click(function() {
-        console.log("reset");
-        localStorage.setItem("level",1);
-        $("#levelCounter").text("resetting!!!!: "+level);
-        window.location.href = "start.html";
-    });
-//button that checks the
-    $("#start_click").click(function () {
-        loadInput();
-        //level_shapes = getUserContent(0);
-        //localStorage.setItem("level_shapes",level_shapes.toString());
-        //
-        //window.location.href = "input.html";
-    });
-    $("#input_click").click(function () {
-        user_shapes = getUserContent(4);
-        //alert(document.cookie);
-
-        var level_shapes_str = localStorage.getItem("level_shapes");
-        console.log(user_shapes.toString());
-        if((user_shapes.toString()) == level_shapes_str){
-            //alert(level_shapes_str+"  mAtCh!"+user_shapes.toString());
-            level++;
-            localStorage.setItem("level",level);
-            console.log("level: "+level);
-            window.location.href = "start.html";
-        }
-        else {
-            var helpTip = localStorage.getItem("level shapes user");
-            alert(helpTip +"\n Sorry, no match, try inputing the above!");
-        }
-    });
-    window.loadInput = function(){
-        level_shapes = getUserContent(0);
-        localStorage.setItem("level_shapes",level_shapes.toString());
-        localStorage.setItem("level shapes user","row1="+level_shapes[0].toString()+"\nrow2="+level_shapes[1].toString()+"\nrow3="+level_shapes[2].toString())
-        window.location.href = "input.html";
-    }
-
+ 
     //gets the shapes from the 3 lists
     //offset for shapelists 0,1,2 and shaplists 4,5,6
     function getUserContent(offset) {
@@ -158,12 +106,7 @@ function generateBoard(level){
     }
 }
 
-function decideNumColors(){
-    console.log("level from num colors:"+level);
-    if(level > 5)
-    return 2;
-return 0;
-}
+
 function decideNumShapes(){
     console.log("level from num shapes:"+level);
     if(level > 3)
