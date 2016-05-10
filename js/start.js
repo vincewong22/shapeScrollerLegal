@@ -26,6 +26,22 @@ function decideColor(numColors){
         
     }
 }
+function decideNumColors_find(){
+    console.log("level from num colors:"+level);
+    if(level > 4)
+    return 2;
+return 0;
+}
+
+function sortList(){
+    //Connect empty sorted lists with draggable elements
+    $(".list").sortable({
+
+        beforeStop: function (event, ui) {
+            newItem = ui.item;
+        }
+    });
+}
 
 //button that checks the
     $("#start_click").click(function () {
@@ -58,10 +74,11 @@ function generateBoard(level){
     for(i=0; i<level; i++) {
         row = "shapelist"+decideRow();
         shape = decideShape(decideNumShapes());
-        path = "images/"+shape+".jpg";
+        path = "images/"+shapes4+".jpg";
         source="images/circle.jpg";
         shapeClass = "block "+decideColor(decideNumColors())+" ui-draggable";
-
+		if(shapeClass)
+			return false;
         var img = $('<img />', {
             id: shape,
             src: path,
