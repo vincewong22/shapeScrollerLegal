@@ -1,4 +1,6 @@
-
+var id = [];
+var level_shapes = [[], [], []], user_shapes = [[], [], []];
+var level=1;
 	
 
 
