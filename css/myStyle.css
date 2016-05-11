@@ -1,0 +1,161 @@
+body{
+	min-width:480px; /* suppose you want minimun width of 1000px */
+	width: auto !important;  /* Firefox will set width as auto */
+	width:480px;             /* As IE ignores !important it will set width as 1000px; */
+	background-image: url("../images/carbon.png");
+}
+.ui-draggable{
+padding:5px; 
+margin: 10px;
+border:90px solid black;
+}
+.ui-draggable-dragging{ 
+border: 5px solid black;
+ width:64px;
+	height:64px;
+}
+.list{
+display:block;
+padding:10px;margin: 10px;
+border:2px solid black;
+width:50px;
+}
+.lista{
+	display:block;
+	padding:10px;margin: 10px;
+	border:2px solid black;
+	width:50px;
+}
+.block{
+	  display:inline;
+
+}
+.one{
+	background-image: url("../images/one.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.two{
+	background-image: url("../images/two.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.three{
+	background-image: url("../images/three.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.verify {
+
+	position: relative;
+}
+#start_click {
+display:inline;
+}
+
+.trash{
+	vertical-align: -210%;
+	width:90px;
+	height:90px;
+	overflow-x:hidden;
+	overflow-y: hidden;
+	white-space:nowrap;
+	display:inline-block;
+	position: relative;
+	background-image: url("../images/trash.png");
+	opacity: 50;
+}
+#init{
+text-align:center;
+} 
+body{
+	background-color: #424242;
+	color: #eee;
+	font-size: 14px;
+	font-family: "Verdana",Geneva,sans-serif;
+	margin: 0;
+	padding: 0;
+}
+.colorRed{
+	border-style:dotted;
+	border-color: #E53935;
+	border-width: 5px;
+	padding:0px;
+	
+}
+.colorBlue{
+	border-style:ridge;
+	border-color: #2196F3;
+	border-width: 5px;
+	padding:0px;
+}
+.colorGreen{
+	border-style:double;
+	border-color: #4CAF50;
+	border-width: 7px;
+	padding:0px;
+	
+}
+.divScroll{
+    width:94%;
+    height:120px;
+    overflow-x:scroll;
+	overflow-y: hidden;
+    white-space:nowrap;	
+}  
+.formGroup{
+	text-align:center;
+}
+
+
+::-webkit-scrollbar {
+    width:12px;
+	height:8px;
+	-webkit-overflow-scrolling: touch;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    background: rgba(0,0,0,0.2); 
+    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.5); 
+}
+
+#readyBtn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #d93434;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+#readyBtn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+ 
+#onBoardText {
+	font-weight:normal;
+	color:#FBFFFA;
+	letter-spacing:1pt;
+	word-spacing:2pt;
+	font-size:2.3em;
+	text-align:left;
+	font-family:arial, helvetica, sans-serif;
+	line-height:1;
+	margin:0px;
+	padding:0px;
+}
