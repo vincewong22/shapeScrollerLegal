@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="" ng-init="level='0'">
+<html lang="en" ng-app="" ng-init="level='0';color='colorRed'">
 <head>
 <meta charset="UTF-8" />
 <title>ShapeScroller</title>
@@ -35,5 +35,41 @@
     <!-- add the divs talked about in class-->
 </div>
 
+<div class="container">
+<div class="row">
+
+<div id="shapelist4" class="list divScroll one"></div>
+<div id="shapelist5" class="list divScroll two"></div>
+<div id="shapelist6" class="list divScroll three"></div>
+
+</div>
+</div>
+<div class="row">
+
+	<div class="col-xs-12">
+
+		<div class="formGroup">
+			<input type="radio" name="color" value="colorRed"  ng-model="color" checked="checked">Red&nbsp
+			<input type="radio" name="color" value="colorGreen"ng-model="color">Green&nbsp
+			<input type="radio" name="color" value="colorBlue"ng-model="color">Blue&nbsp
+			<button id="input_click" class="verify">verify here</button>
+		</div>
+
+	 </div> 
+	 </div>
+	 <br>
+<div class="row">
+
+	<div class="col-xs-12">
+	<div id="init">
+		<span id="shapelist3" class=" list trash "></span>
+
+	  <img id="circle" class="block {{color}}"src="images/circle.jpg">
+		<img id="box" class="block {{color}}"src="images/box.jpg">
+		<img id="triangle" class="block {{color}}"src="images/triangle.jpg">
+	   </div>
+
+
+	</div>
 </body>
 </html>
