@@ -1,8 +1,10 @@
 var id = [];
 var level_shapes = [[], [], []], user_shapes = [[], [], []];
 var level=1;
+var lives = 3;
 
 $(document).ready(function () {
+	
     level = localStorage.getItem("level",level);
     if(level == null){
         localStorage.setItem("level",1);
@@ -47,13 +49,22 @@ $(document).ready(function () {
         else {
             var helpTip = localStorage.getItem("level shapes user");
             alert(helpTip +"\n Sorry, no match, try inputing the above!");
+			lives--;
+			$("#lives").html(lives);
         }
     });
+	$("#clue_click").click(function () {
+        $("#randomGenerator").slideDown();
+		$("#input").slideUp();
+		startTimer();
+});
+    
     window.loadInput = function(){
         level_shapes = getUserContent(0);
-        localStorage.setItem("level_shapes",level_shapes.toString());
-        localStorage.setItem("level shapes user","row1="+level_shapes[0].toString()+"\nrow2="+level_shapes[1].toString()+"\nrow3="+level_shapes[2].toString())
-        window.location.href = "input.html";
+		hideInput();
+        //localStorage.setItem("level_shapes",level_shapes.toString());
+        //localStorage.setItem("level shapes user","row1="+level_shapes[0].toString()+"\nrow2="+level_shapes[1].toString()+"\nrow3="+level_shapes[2].toString())
+        //window.location.href = "input.html";
     }
 
     //gets the shapes from the 3 lists
@@ -80,8 +91,13 @@ $(document).ready(function () {
         return shapeArray;
     }
     startTimer();
+	$("#lives").html(lives);
+	$("#input").hide();
 });//end of ready
-
+function hideInput(){
+$("#randomGenerator").slideUp();
+$("#input").slideDown();
+}
 function startTimer(){
 
     var countdown =  $("#countdown").countdown360({
@@ -89,7 +105,8 @@ function startTimer(){
         seconds     : 10,
         fontColor   : '#FFFFFF',
         autostart   : false,
-        onComplete : function() {window.loadInput()
+        onComplete : function() {hideInput()
+		//window.loadInput()
 
            // window.location = "input.html"
 
