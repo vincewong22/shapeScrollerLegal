@@ -42,17 +42,58 @@
 		padding-left: 40px;
 
 	}
+	
+	#overlay {
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     opacity: 0.7;
+	}
+
+	#overlay div {
+     width:300px;
+     margin: 100px auto;
+     background-color: #fff;
+     border:1px solid #000;
+     padding:15px;
+     text-align:center;
+     color: black;
+	}
+
+	.close {
+		float: right;
+		font-weight: bold;
+	}
+
+	.muteButton {
+		font-size: 20px;
+		background-color: #4CAF50; /* Green */
+		border: none;
+		color: #fff;
+		text-align: center;
+		padding: 10px 27px;
+	}
+
+	.themeButton {
+		font-size: 20px;
+		background-color: #4CAF50; /* Green */
+		border: none;
+		color: #fff;
+		text-align: center;
+		padding: 10px 27px;
+	}
 
 
 </style>
 
 </head>
 <body>
-
 <nav>
-	<a href="settings.html">
-  		<img src="images/settingIcon.png" alt="Settings" style="width:70px;height:70px; float: right;">
-	</a>
+	<img src="images/settingIcon.png" alt="Settings" style="width:70px;height:70px; float: right;" onclick ="settingsPopUp()">
 </nav>
 <div id="Logo"><img src="images/logo.png" style="width:350px; height:350px;" onClick = "onClick()"></div>
 <div id= "Name">
@@ -62,7 +103,28 @@
 	<button class="button" id="Play" onclick="play()">Play</button>
 	<button class ="button" id="Tutorial" onclick="tutorial()">Tutorial</button>
 </div>
+<div id="overlay">
+     <div>
+     	  <span class="close">x</span>
+     	  <h2>Settings</h2>
+          <p>Here you can change the game's settings.</p>
+		    <!--clicking the mute and theme icon currently does nothing btw -->
+          <img src="images/mutepic.png" alt="muteIcon" style="width:70px; height:70px;">
+          <img src="images/changeThemeIcon.png" alt="muteIcon" style="width:70px; height:70px; padding-left: 20px;">
+     </div>
+</div>
 <script>
+	// Retrieve <span> element 
+	var span = document.getElementsByClassName("close")[0];
+
+	// If you click on span element aka the 'x'
+	span.onclick = function() {
+    	$("#overlay").hide();
+	}
+
+	// Hides the settings div initially
+	$("#overlay").hide();
+	
 	function play() {
 		window.location.href = "onboarding.html"; // link to memorization screen
 	}
@@ -72,6 +134,11 @@
 	}
 	function onClick(){
 		window.location.href = "main_easter.html"; // link to easter egg
+	}
+	
+	function settingsPopUp() {
+		// Show settings overlay
+		$("#overlay").show();
 	}
 </script>
 </body>
