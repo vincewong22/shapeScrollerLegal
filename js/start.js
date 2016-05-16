@@ -1,13 +1,10 @@
 var id = [];
 var level_shapes = [[], [], []], user_shapes = [[], [], []];
 var level=1;
+var lives = 3;
 
 $(document).ready(function () {
-    level = localStorage.getItem("level",level);
-    if(level == null){
-        localStorage.setItem("level",1);
-    }
-    $("#levelCounter").text("Level: "+level);
+	
     var difficulty = level;
     generateBoard(level);
 //Set all elements with init id with block class drag enabled
@@ -18,9 +15,7 @@ $(document).ready(function () {
     });
 
     $( "#reset" ).click(function() {
-        console.log("reset");
-        localStorage.setItem("level",1);
-        $("#levelCounter").text("resetting!!!!: "+level);
+    
         window.location.href = "start.html";
     });
 //button that checks the
@@ -33,27 +28,39 @@ $(document).ready(function () {
     });
     $("#input_click").click(function () {
         user_shapes = getUserContent(4);
-        //alert(document.cookie);
-
-        var level_shapes_str = localStorage.getItem("level_shapes");
-        console.log(user_shapes.toString());
-        if((user_shapes.toString()) == level_shapes_str){
-            //alert(level_shapes_str+"  mAtCh!"+user_shapes.toString());
+		
+		
+        if(user_shapes.toString() == level_shapes.toString()){
+            alert("match");
             level++;
-            localStorage.setItem("level",level);
-            console.log("level: "+level);
-            window.location.href = "start.html";
+            generateBoard(level);
+			$("#input").slideUp();
+			$("#shapelist4").empty();
+			$("#shapelist5").empty();
+			$("#shapelist6").empty();
+			$("#randomGenerator").slideDown();
+			startTimer();
+			updateCounters();
         }
         else {
-            var helpTip = localStorage.getItem("level shapes user");
-            alert(helpTip +"\n Sorry, no match, try inputing the above!");
+            //var helpTip = localStorage.getItem("level shapes user");
+            alert("no match");
+			lives--;
+			$("#lives").html(lives);
         }
     });
+	$("#clue_click").click(function () {
+        $("#randomGenerator").slideDown();
+		$("#input").slideUp();
+		startTimer();
+});
+    
     window.loadInput = function(){
         level_shapes = getUserContent(0);
-        localStorage.setItem("level_shapes",level_shapes.toString());
-        localStorage.setItem("level shapes user","row1="+level_shapes[0].toString()+"\nrow2="+level_shapes[1].toString()+"\nrow3="+level_shapes[2].toString())
-        window.location.href = "input.html";
+		hideInput();
+        //localStorage.setItem("level_shapes",level_shapes.toString());
+        //localStorage.setItem("level shapes user","row1="+level_shapes[0].toString()+"\nrow2="+level_shapes[1].toString()+"\nrow3="+level_shapes[2].toString())
+        //window.location.href = "input.html";
     }
 
     //gets the shapes from the 3 lists
@@ -80,16 +87,27 @@ $(document).ready(function () {
         return shapeArray;
     }
     startTimer();
+	updateCounters();
+	$("#input").hide();
 });//end of ready
 
+function updateCounters(){
+$("#lives").html("lives: "+lives);
+	$("#levelCounter").html("level: "+level);
+}
+function hideInput(){
+$("#randomGenerator").slideUp();
+$("#input").slideDown();
+}
 function startTimer(){
 
     var countdown =  $("#countdown").countdown360({
-        radius      : 90,
+        radius      : 40,
         seconds     : 10,
         fontColor   : '#FFFFFF',
         autostart   : false,
-        onComplete : function() {window.loadInput()
+        onComplete : function() {hideInput()
+		//window.loadInput()
 
            // window.location = "input.html"
 
