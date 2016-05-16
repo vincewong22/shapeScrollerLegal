@@ -4,9 +4,11 @@ var level=1;
 var lives = 3;
 
 $(document).ready(function () {
-	
+	if(lives==3){
+	$("#gameOver").hide();
     var difficulty = level;
     generateBoard(level);
+	}
 //Set all elements with init id with block class drag enabled
     init();
 //button that checks the
@@ -31,9 +33,10 @@ $(document).ready(function () {
 		
 		
         if(user_shapes.toString() == level_shapes.toString()){
-            alert("match");
+            //alert("match");
             level++;
             generateBoard(level);
+			if(lives!=0)
 			$("#input").slideUp();
 			$("#shapelist4").empty();
 			$("#shapelist5").empty();
@@ -45,14 +48,19 @@ $(document).ready(function () {
         else {
             //var helpTip = localStorage.getItem("level shapes user");
             alert("no match");
-			lives--;
-			$("#lives").html(lives);
+			updateLives();
         }
     });
 	$("#clue_click").click(function () {
+		if(lives ==0){
+			gameOver();
+		}
+		else{
         $("#randomGenerator").slideDown();
 		$("#input").slideUp();
 		startTimer();
+		updateLives();
+		}
 });
     
     window.loadInput = function(){
@@ -90,12 +98,28 @@ $(document).ready(function () {
 	updateCounters();
 	$("#input").hide();
 });//end of ready
+function updateLives(){
+	if(lives==1){
+		lives=0;
+	gameOver();
+	}
+	else{
+	lives--;
+	$("#lives").html("lives: "+lives);
+	}
+}
+function gameOver(){
+$("#gameOver").slideDown();
+$("#randomGenerator").remove();
+$("#input").remove();
+}
 
 function updateCounters(){
 $("#lives").html("lives: "+lives);
 	$("#levelCounter").html("level: "+level);
 }
 function hideInput(){
+if(lives!=0)
 $("#randomGenerator").slideUp();
 $("#input").slideDown();
 }
