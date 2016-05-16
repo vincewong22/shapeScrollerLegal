@@ -5,11 +5,6 @@ var lives = 3;
 
 $(document).ready(function () {
 	
-    level = localStorage.getItem("level",level);
-    if(level == null){
-        localStorage.setItem("level",1);
-    }
-    $("#levelCounter").text("Level: "+level);
     var difficulty = level;
     generateBoard(level);
 //Set all elements with init id with block class drag enabled
@@ -20,9 +15,7 @@ $(document).ready(function () {
     });
 
     $( "#reset" ).click(function() {
-        console.log("reset");
-        localStorage.setItem("level",1);
-        $("#levelCounter").text("resetting!!!!: "+level);
+    
         window.location.href = "start.html";
     });
 //button that checks the
@@ -35,20 +28,22 @@ $(document).ready(function () {
     });
     $("#input_click").click(function () {
         user_shapes = getUserContent(4);
-        //alert(document.cookie);
-
-        var level_shapes_str = localStorage.getItem("level_shapes");
-        console.log(user_shapes.toString());
-        if((user_shapes.toString()) == level_shapes_str){
-            //alert(level_shapes_str+"  mAtCh!"+user_shapes.toString());
+		
+		
+        if(user_shapes.toString() == level_shapes.toString()){
+            alert("match");
             level++;
-            localStorage.setItem("level",level);
-            console.log("level: "+level);
-            window.location.href = "start.html";
+            generateBoard(level);
+			$("#input").slideUp();
+			$("#shapelist4").empty();
+			$("#shapelist5").empty();
+			$("#shapelist6").empty();
+			$("#randomGenerator").slideDown();
+			startTimer();
         }
         else {
-            var helpTip = localStorage.getItem("level shapes user");
-            alert(helpTip +"\n Sorry, no match, try inputing the above!");
+            //var helpTip = localStorage.getItem("level shapes user");
+            alert("no match");
 			lives--;
 			$("#lives").html(lives);
         }
