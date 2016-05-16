@@ -40,6 +40,7 @@ $(document).ready(function () {
 			$("#shapelist6").empty();
 			$("#randomGenerator").slideDown();
 			startTimer();
+			updateCounters();
         }
         else {
             //var helpTip = localStorage.getItem("level shapes user");
@@ -86,9 +87,14 @@ $(document).ready(function () {
         return shapeArray;
     }
     startTimer();
-	$("#lives").html(lives);
+	updateCounters();
 	$("#input").hide();
 });//end of ready
+
+function updateCounters(){
+$("#lives").html("lives: "+lives);
+	$("#levelCounter").html("level: "+level);
+}
 function hideInput(){
 $("#randomGenerator").slideUp();
 $("#input").slideDown();
@@ -96,7 +102,7 @@ $("#input").slideDown();
 function startTimer(){
 
     var countdown =  $("#countdown").countdown360({
-        radius      : 90,
+        radius      : 40,
         seconds     : 10,
         fontColor   : '#FFFFFF',
         autostart   : false,
