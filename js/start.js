@@ -23,17 +23,12 @@ $(document).ready(function () {
 //button that checks the
     $("#start_click").click(function () {
         loadInput();
-        //level_shapes = getUserContent(0);
-        //localStorage.setItem("level_shapes",level_shapes.toString());
-        //
-        //window.location.href = "input.html";
     });
     $("#input_click").click(function () {
         user_shapes = getUserContent(4);
 		
 		
         if(user_shapes.toString() == level_shapes.toString()){
-            //alert("match");
             level++;
             generateBoard(level);
 			if(lives!=0)
@@ -53,6 +48,7 @@ $(document).ready(function () {
     });
 	$("#clue_click").click(function () {
 		if(lives ==0){
+			
 			gameOver();
 		}
 		else{
@@ -109,6 +105,7 @@ function updateLives(){
 	}
 }
 function gameOver(){
+	$("#lives").html("lives: 0");
 $("#gameOver").slideDown();
 $("#randomGenerator").remove();
 $("#input").remove();

@@ -10,22 +10,27 @@
 <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 	<script src="js/jquery.countdown360.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+
 
 <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="container">
+
+
+
+
+
 <div id="lives">lives not set</div>
 <div id="levelCounter">level not set</div>
 <div id="gameOver">
 		<p>game over sorry, submit your high score below</p>
-		<form action="demo_form.asp">
-		  First name: <input type="text" name="fname"><br>
-		  Last name: <input type="text" name="lname"><br>
-		  <input type="submit" value="Submit">
-		</form>
+	<form action="welcome.php" method="post">
+Name: <input type="text" name="name"><br>
+E-mail: <input type="text" name="email"><br>
+<input type="submit">
+</form>
 		</div>
 <div id="randomGenerator">
 
@@ -36,14 +41,13 @@
 </div>
 
 <div id="shapelist0" class="lista divScroll one">
-	<!--<img id="circle" class="block colorRed ui-draggable" src="images/circle.jpg">-->
+	
 </div>
 <div id="shapelist1" class="lista divScroll two">
-	<!--<img id="circle" class="block colorRed ui-draggable" src="images/circle.jpg">-->
+	
 </div>
 <div id="shapelist2" class="lista divScroll three">
-	<!--<img id="circle" class="block colorRed ui-draggable" src="images/circle.jpg">-->
-    <!-- add the divs talked about in class-->
+	
 </div>
 </div>
 <div id="input">
