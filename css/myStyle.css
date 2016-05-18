@@ -159,3 +159,13 @@ body{
 	margin:0px;
 	padding:0px;
 }
+
+#countdown {
+    float: right;
+    display: inline;
+}
+
+#start_click{
+    float: right;
+    display: inline;
+}
