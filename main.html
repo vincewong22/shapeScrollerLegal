@@ -2,6 +2,7 @@
 <html lang="en" ng-app="" ng-init="color='colorRed'">
 <head>
 <meta charset="UTF-8" />
+
 <title></title>
 
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -27,6 +28,10 @@
 		font-size: 24px;
 
 	}
+	.col-xs-12 {
+		max-width: 100%;
+		height: auto;
+	}
 
 	#Buttons {
 		text-align: center;
@@ -35,7 +40,10 @@
 
 	#Logo {
 		text-align: center;
-		padding-top: 50px;
+		padding-top: 5px;
+		max-width: 100%;
+		height: auto;
+
 	}
 
 	#Name {
@@ -92,18 +100,18 @@
 
 </head>
 <body>
-
+  <div class ="col-lg-12">
 	<nav>
 		<img src="images/settingIcon.png" alt="Settings" style="width:70px;height:70px; float: right;" onclick ="settingsPopUp()">
 	</nav>
 	<div class = "col-xs-12">
-		<div id="Logo" ><img src="images/logo.png" style="width:350px; height:350px;" onClick = "onClick()"></div>
+		<div id="Logo" ><img src="images/logo.png" style="max-width: 40%; height:auto;" onClick = "onClick()"></div>
 	</div>
 	<div class = "col-xs-12">
 		<div id= "Name">
 			<img src="images/logotext.png" style="width:399px; height:99px;"></div>
 		</div>
-	</div>
+
 <div class = "col-lg-12">
 	<div id ="Buttons">
 		<button class="button" id="Play" onclick="play()">Play</button>
@@ -181,5 +189,6 @@
 		$("#overlay").show();
 	}
 </script>
+</div>
 </body>
 </html>
