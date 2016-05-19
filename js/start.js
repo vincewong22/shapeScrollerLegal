@@ -4,7 +4,21 @@ var level=1;
 var lives = 3;
 
 $(document).ready(function () {
+	startmain();
 	
+});//end of ready
+
+function startmain(){
+	$("#input").hide(); 
+	$("#randomGenerator").hide();
+	$("#gameOver").hide();
+	 $( "#play" ).click(function() {
+        playGame();
+    });
+	
+}
+function playGame(){
+$("#input").show();
 	if(lives==3){
 	$("#gameOver").hide();
     var difficulty = level;
@@ -94,7 +108,7 @@ $(document).ready(function () {
     startTimer();
 	updateCounters();
 	$("#input").hide();
-});//end of ready
+}
 function updateLives(){
 	if(lives==1){
 		lives=0;
