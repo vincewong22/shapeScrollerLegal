@@ -7,6 +7,7 @@
 Welcome <?php echo $_POST["name"]; ?><br>
 Your email address is: <?php echo $_POST["email"]; ?><br>
 Your level achieved: <?php echo $_POST["level"]; ?><br>
+<h1>LEADERBOARD</h1>
 <?php
 
 /*** mysql hostname ***/
