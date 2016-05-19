@@ -1,11 +1,12 @@
 var id = [];
 var level_shapes = [[], [], []], user_shapes = [[], [], []];
 var level=1;
-var lives = 3;
+var lives =3;
 
 $(document).ready(function () {
 	if(lives==3){
-	$("#gameOver").hide();
+	
+    $("#gameOver").hide();
     var difficulty = level;
     generateBoard(level);
 	}
@@ -106,6 +107,10 @@ function updateLives(){
 	else{
 	lives--;
 	$("#lives").html("lives: "+lives);
+    if(lives == 2)
+{document.getElementById("img").src="img/twoLives.png";}
+if(lives == 1)
+{document.getElementById("img").src="img/oneLives.png";}
 	}
 }
 function gameOver(){
@@ -116,8 +121,7 @@ $("#input").remove();
 
 function updateCounters(){
 $("#lives").html("lives: "+lives);
-	$("#levelCounter").html("level: "+level);
-}
+	$("#levelCounter").html("level: "+level);}
 function hideInput(){
 if(lives!=0)
 $("#randomGenerator").slideUp();
