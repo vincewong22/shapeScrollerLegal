@@ -4,7 +4,7 @@ var level=1;
 var lives = 3;
 
 $(document).ready(function () {
-	$("#levelAcheived").html("level: "+level);
+	
 	if(lives==3){
 	$("#gameOver").hide();
     var difficulty = level;
@@ -110,6 +110,7 @@ function gameOver(){
 $("#gameOver").slideDown();
 $("#randomGenerator").remove();
 $("#input").remove();
+$('input[name=level]').val(level);
 }
 
 function updateCounters(){
