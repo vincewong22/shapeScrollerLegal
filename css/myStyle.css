@@ -49,9 +49,6 @@ width:50px;
 
 	position: relative;
 }
-#start_click {
-display:inline;
-}
 
 .trash{
 	vertical-align: -210%;
@@ -161,13 +158,11 @@ body{
 }
 
 #countdown {
-    float: right;
-    display: inline;
+    float: left;
 }
 
-#start_click{
-    float: right;
-    display: inline;
+#skipButton{
+    float: left;
 }
 
 #alignment {
