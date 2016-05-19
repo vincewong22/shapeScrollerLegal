@@ -18,9 +18,17 @@
 <script src="js/myScript.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <style type="text/css">
+	.button {
+		background-color: #4CAF50;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		cursor: pointer;
+		font-size: 24px;
 
-	.max-width: 100%;
-		height: auto;{
+	}
+	.col-xs-12 {
 		max-width: 100%;
 		height: auto;
 	}
@@ -78,10 +86,18 @@
 		padding: 10px 27px;
 	}
 
-
+	.themeButton {
+		font-size: 20px;
+		background-color: #4CAF50; /* Green */
+		border: none;
+		color: #fff;
+		text-align: center;
+		padding: 10px 27px;
+	}
 
 
 </style>
+
 </head>
 <body>
   <div class ="col-lg-12">
@@ -89,7 +105,7 @@
 		<img src="images/settingIcon.png" alt="Settings" style="width:70px;height:70px; float: right;" onclick ="settingsPopUp()">
 	</nav>
 	<div class = "col-xs-12">
-		<div id="Logo" ><img src="images/logo.png" style="width: 350px; height:auto;" onClick = "onClick()"></div>
+		<div id="Logo" ><img src="images/logo.png" style="max-width: 40%; height:auto;" onClick = "onClick()"></div>
 	</div>
 	<div class = "col-xs-12">
 		<div id= "Name">
@@ -98,14 +114,9 @@
 
 <div class = "col-lg-12">
 	<div id ="Buttons">
-		<a href ="onboarding.html">
-			<img src="images/play.png" style="width: 100px; height:auto; padding-right: 20px">
-		</a>
-		<a href ="tutorial.html">
-		<img src="images/tutorial.png" style="width: 100px; height:auto; padding-left: 20px;">
-		</a>
+		<button class="button" id="Play" onclick="play()">Play</button>
+		<button class ="button" id="Tutorial" onclick="tutorial()">Tutorial</button>
 	</div>
-</div>
 </div>
 <div id="overlay">
      <div class = "icons">
@@ -178,5 +189,6 @@
 		$("#overlay").show();
 	}
 </script>
+</div>
 </body>
 </html>
