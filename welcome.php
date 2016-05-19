@@ -65,7 +65,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-	echo'<div id='leaderboard'';
+	echo'<div id="leaderboard">';
 	echo'<table>';
 	echo'<tr>';
 	echo'<th>Record #</th>';
@@ -85,7 +85,7 @@ if ($result->num_rows > 0) {
 		echo"</tr>";
 	}
 	echo'</table>';
-	echo'</div>;
+	echo'</div>';
 } else {
     echo "0 results";
 }
