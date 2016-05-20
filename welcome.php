@@ -15,10 +15,10 @@ Your level achieved: <?php echo $_POST["level"]; ?><br>
 $hostname = 'localhost';
 
 /*** mysql username ***/
-$username = 'root';
+$username = 'gofiuawo_vince';
 
 /*** mysql password ***/
-$password = '';
+$password = '101010';
 
 $dbname = "gofiuawo_leaderboard";
 // Create connection
