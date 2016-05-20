@@ -59,7 +59,7 @@ if ($conn->query($sql) === TRUE) {
 
 $sql = "SELECT id, firstname, email,reg_date,level 
 		FROM LeaderBoard
-		ORDER BY level DESC, reg_date DESC
+		ORDER BY level DESC, reg_date ASC
 		"
 		;
 $result = $conn->query($sql);

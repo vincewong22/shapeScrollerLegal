@@ -4,23 +4,30 @@ var level=1;
 var lives = 3;
 
 $(document).ready(function () {
+
+	$("#settingsPanel").toggle();
+	$("#input").toggle();
+	$("#gameOver").toggle();
+	$("#stats").toggle();
+	$("#countdown").toggle();
 	startmain();
 	
 });//end of ready
 
 function startmain(){
-	$("#stats").hide();
-	$("#settingsPanel").hide();
-	$("#input").hide(); 
-	$("#randomGenerator").hide();
-	$("#gameOver").hide();
+	
 	$( "#play" ).click(function() {
-        playGame();
+	$("#mainPanel").toggle();
+	$("#input").toggle();
+	
+	$("#stats").toggle();
+	$("#countdown").toggle();
+      playGame();  
     });
 	
 }
 function playGame(){
-$("#randomGenerator").show();
+	
 	if(lives==3){
 	$("#gameOver").hide();
     var difficulty = level;
@@ -109,7 +116,7 @@ $("#randomGenerator").show();
     }
     startTimer();
 	updateCounters();
-	$("#input").hide();
+	$("#input").slideUp();
 }
 function updateLives(){
 	if(lives==1){
