@@ -9,16 +9,18 @@ $(document).ready(function () {
 });//end of ready
 
 function startmain(){
+	$("#stats").hide();
+	$("#settingsPanel").hide();
 	$("#input").hide(); 
 	$("#randomGenerator").hide();
 	$("#gameOver").hide();
-	 $( "#play" ).click(function() {
+	$( "#play" ).click(function() {
         playGame();
     });
 	
 }
 function playGame(){
-$("#input").show();
+$("#randomGenerator").show();
 	if(lives==3){
 	$("#gameOver").hide();
     var difficulty = level;
