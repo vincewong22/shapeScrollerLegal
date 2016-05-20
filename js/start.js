@@ -4,12 +4,13 @@ var level=1;
 var lives = 3;
 
 $(document).ready(function () {
-
+$("#randomGenerator").toggle();
 	$("#settingsPanel").toggle();
 	$("#input").toggle();
 	$("#gameOver").toggle();
 	$("#stats").toggle();
 	$("#countdown").toggle();
+		
 	startmain();
 	
 });//end of ready
@@ -17,6 +18,8 @@ $(document).ready(function () {
 function startmain(){
 	
 	$( "#play" ).click(function() {
+		$("#randomGenerator").toggle();
+		$("#countdown").toggle();
 	$("#mainPanel").toggle();
 	$("#input").toggle();
 	

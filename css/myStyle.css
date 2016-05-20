@@ -172,4 +172,14 @@ label{
 	
     
 }
-
+#start_click{
+	vertical-align:top;
+font-size: 2.5em;
+}
+#stats{
+	vertical-align:top;
+font-size: 2em;
+}
+#mainPanel{
+	text-align:center;
+}
