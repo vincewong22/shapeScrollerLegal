@@ -1,50 +1,55 @@
+//initial values
 var id = [];
 var level_shapes = [[], [], []], user_shapes = [[], [], []];
-var level=1;
+var level = 1;
 var lives = 3;
 
+//turn off non essential panels
 $(document).ready(function () {
-$("#randomGenerator").toggle();
-	$("#settingsPanel").toggle();
-	$("#input").toggle();
-	$("#gameOver").toggle();
-	$("#stats").toggle();
-	$("#countdown").toggle();
-		
-	startmain();
-	
+    $("#randomGenerator").toggle();
+    $("#settingsPanel").toggle();
+    $("#input").toggle();
+    $("#gameOver").toggle();
+    $("#stats").toggle();
+    $("#countdown").toggle();
+
+    startmain();
+
 });//end of ready
 
-function startmain(){
-	
-	$( "#play" ).click(function() {
-		$("#randomGenerator").toggle();
-		$("#countdown").toggle();
-	$("#mainPanel").toggle();
-	$("#input").toggle();
-	
-	$("#stats").toggle();
-	$("#countdown").toggle();
-      playGame();  
+//starts game off
+function startmain() {
+
+    $("#play").click(function () {
+        $("#randomGenerator").toggle();
+        $("#countdown").toggle();
+        $("#mainPanel").toggle();
+        $("#input").toggle();
+
+        $("#stats").toggle();
+        $("#countdown").toggle();
+        playGame();
     });
-	
+
 }
-function playGame(){
-	
-	if(lives==3){
-	$("#gameOver").hide();
-    var difficulty = level;
-    generateBoard(level);
-	}
+
+//initial game loop
+function playGame() {
+
+    if (lives == 3) {
+        $("#gameOver").hide();
+        var difficulty = level;
+        generateBoard(level);
+    }
 //Set all elements with init id with block class drag enabled
     init();
 //button that checks the
-    $( "#click" ).click(function() {
+    $("#click").click(function () {
         getListContent();
     });
 
-    $( "#reset" ).click(function() {
-    
+    $("#reset").click(function () {
+
         window.location.href = "start.html";
     });
 //button that checks the
@@ -53,42 +58,42 @@ function playGame(){
     });
     $("#input_click").click(function () {
         user_shapes = getUserContent(4);
-		
-		
-        if(user_shapes.toString() == level_shapes.toString()){
+
+
+        if (user_shapes.toString() == level_shapes.toString()) {
             level++;
             generateBoard(level);
-			if(lives!=0)
-			$("#input").slideUp();
-			$("#shapelist4").empty();
-			$("#shapelist5").empty();
-			$("#shapelist6").empty();
-			$("#randomGenerator").slideDown();
-			startTimer();
-			updateCounters();
+            if (lives != 0)
+                $("#input").slideUp();
+            $("#shapelist4").empty();
+            $("#shapelist5").empty();
+            $("#shapelist6").empty();
+            $("#randomGenerator").slideDown();
+            startTimer();
+            updateCounters();
         }
         else {
             //var helpTip = localStorage.getItem("level shapes user");
             alert("no match");
-			updateLives();
+            updateLives();
         }
     });
-	$("#clue_click").click(function () {
-		if(lives ==0){
-			
-			gameOver();
-		}
-		else{
-        $("#randomGenerator").slideDown();
-		$("#input").slideUp();
-		startTimer();
-		updateLives();
-		}
-});
-    
-    window.loadInput = function(){
+    $("#clue_click").click(function () {
+        if (lives == 0) {
+
+            gameOver();
+        }
+        else {
+            $("#randomGenerator").slideDown();
+            $("#input").slideUp();
+            startTimer();
+            updateLives();
+        }
+    });
+
+    window.loadInput = function () {
         level_shapes = getUserContent(0);
-		hideInput();
+        hideInput();
         //localStorage.setItem("level_shapes",level_shapes.toString());
         //localStorage.setItem("level shapes user","row1="+level_shapes[0].toString()+"\nrow2="+level_shapes[1].toString()+"\nrow3="+level_shapes[2].toString())
         //window.location.href = "input.html";
@@ -100,7 +105,7 @@ function playGame(){
         var myClass;
         var shapelist0 = [], shapelist1 = [], shapelist2 = [];
         var shapeArray = [shapelist0, shapelist1, shapelist2];
-        for (i = 0+offset,j=0; i < shapeArray.length+offset; i++,j++) {
+        for (i = 0 + offset, j = 0; i < shapeArray.length + offset; i++, j++) {
             var target = "#shapelist" + i + " img";
             console.log(target);
             $(target).each(function () {
@@ -117,58 +122,66 @@ function playGame(){
         }
         return shapeArray;
     }
+
     startTimer();
-	updateCounters();
-	$("#input").slideUp();
+    updateCounters();
+    $("#input").slideUp();
 }
-function updateLives(){
-	if(lives==1){
-		lives=0;
-	gameOver();
-	}
-	else{
-	lives--;
-	$("#lives").html("lives: "+lives);
-	}
+//updates the stats
+function updateLives() {
+    if (lives == 1) {
+        lives = 0;
+        gameOver();
+    }
+    else {
+        lives--;
+        $("#lives").html("lives: " + lives);
+    }
 }
-function gameOver(){
-	$("#lives").html("lives: 0");
-$("#gameOver").slideDown();
-$("#randomGenerator").remove();
-$("#input").remove();
-$('input[name=level]').val(level);
+//ends game
+function gameOver() {
+    $("#lives").html("lives: 0");
+    $("#gameOver").slideDown();
+    $("#randomGenerator").remove();
+    $("#input").remove();
+    $('input[name=level]').val(level);
 }
 
-function updateCounters(){
-$("#lives").html("lives: "+lives);
-	$("#levelCounter").html("level: "+level);
+//updates lives and level counters
+function updateCounters() {
+    $("#lives").html("lives: " + lives);
+    $("#levelCounter").html("level: " + level);
 }
-function hideInput(){
-if(lives!=0)
-$("#randomGenerator").slideUp();
-$("#input").slideDown();
+//hide generation panels when input is called by timer
+function hideInput() {
+    if (lives != 0)
+        $("#randomGenerator").slideUp();
+    $("#input").slideDown();
 }
-function startTimer(){
+//starts off timer
+function startTimer() {
 
-    var countdown =  $("#countdown").countdown360({
-        radius      : 40,
-        seconds     : 10,
-        fontColor   : '#FFFFFF',
-        autostart   : false,
-        onComplete : function() {hideInput()
-		//window.loadInput()
+    var countdown = $("#countdown").countdown360({
+        radius: 40,
+        seconds: 10,
+        fontColor: '#FFFFFF',
+        autostart: false,
+        onComplete: function () {
+            hideInput()
+            //window.loadInput()
 
-           // window.location = "input.html"
+            // window.location = "input.html"
 
         }
         <!--onComplete  : function() { console.log('done') } -->
     });
     countdown.start();
-    console.log('countdown360 ',countdown);
+    console.log('countdown360 ', countdown);
 }
-
-function init(){
-    $("#init .block").draggable({ helper: "clone",
+//initializes sortable
+function init() {
+    $("#init .block").draggable({
+        helper: "clone",
         connectToSortable: ".list",
         drop: function (event, ui) {
 
@@ -176,10 +189,10 @@ function init(){
     });
     sortList();
 }
-
-function decideShape(numShapes){
-    var shapeNum = Math.floor( Math.random() * numShapes );
-    switch(shapeNum){
+//lets you customize what shapes to start game off with
+function decideShape(numShapes) {
+    var shapeNum = Math.floor(Math.random() * numShapes);
+    switch (shapeNum) {
         case 0:
             return "circle";
             break;
@@ -190,12 +203,14 @@ function decideShape(numShapes){
             return "box";
     }
 }
-function decideRow(){
-    return Math.floor( (Math.random() * 3) );
+//decide which row to put random shape in
+function decideRow() {
+    return Math.floor((Math.random() * 3));
 }
-function decideColor(numColors){
-    var shapeNum = Math.floor( Math.random() * numColors);
-    switch(shapeNum){
+//decide on what color random shape should be
+function decideColor(numColors) {
+    var shapeNum = Math.floor(Math.random() * numColors);
+    switch (shapeNum) {
         case 0:
             return "colorRed";
             break;
@@ -206,55 +221,59 @@ function decideColor(numColors){
             return "colorGreen";
     }
 }
-
-function generateBoard(level){
-    var row,shape,styleShape,source,shapeClass;
-    for(i=0; i<level; i++) {
-        row = "shapelist"+decideRow();
+//creates the levels
+function generateBoard(level) {
+    var row, shape, styleShape, source, shapeClass;
+    for (i = 0; i < level; i++) {
+        row = "shapelist" + decideRow();
         shape = decideShape(decideNumShapes());
-        path = "images/"+shape+".jpg";
-        source="images/circle.jpg";
-        shapeClass = "block "+decideColor(decideNumColors())+" ui-draggable";
+        path = "images/" + shape + ".jpg";
+        source = "images/circle.jpg";
+        shapeClass = "block " + decideColor(decideNumColors()) + " ui-draggable";
 
         var img = $('<img />', {
             id: shape,
             src: path,
             class: shapeClass
         });
-        img.appendTo($("#"+row));
+        img.appendTo($("#" + row));
     }
 }
-
-function decideNumColors(){
-    console.log("level from num colors:"+level);
-    if(level > 5)
-    return 2;
-return 0;
-}
-function decideNumShapes(){
-    console.log("level from num shapes:"+level);
-    if(level > 3)
+//lets you fine tune number of colors avaiable based on which level
+//pre-condition level must be greater then 0
+function decideNumColors() {
+    console.log("level from num colors:" + level);
+    if (level > 5)
         return 2;
-    if(level > 4)
+    return 0;
+}
+//lets you fine tune number of shapes avaiable based on which level
+//pre-condition level must be greater then 0
+function decideNumShapes() {
+    console.log("level from num shapes:" + level);
+    if (level > 3)
+        return 2;
+    if (level > 4)
         return 3;
     return 1;
 }
-function sortList(){
+
+function sortList() {
     //Connect empty sorted lists with draggable elements
     $(".list").sortable({
 
         connectWith: ".list",
-        receive: function(event,ui) {
+        receive: function (event, ui) {
             var id = ui.item.attr("id");
-            if(id == "box")
-                $(newItem).attr({style: "content:url(images/box.jpg)" });
-            if(id == "triangle")
-                $(newItem).attr({style: "content:url(images/triangle.jpg)" });
-            if(id == "circle")
-                $(newItem).attr({style: "content:url(images/circle.jpg)" });
+            if (id == "box")
+                $(newItem).attr({style: "content:url(images/box.jpg)"});
+            if (id == "triangle")
+                $(newItem).attr({style: "content:url(images/triangle.jpg)"});
+            if (id == "circle")
+                $(newItem).attr({style: "content:url(images/circle.jpg)"});
             //check to see if your dragging out a new shape, if so, then give it a color, if check was not here
             //old shapes would have color overridden
-            if(($(this).hasClass("colorBlue") ||$(this).hasClass("colorRed")||$(this).hasClass("colorGreen")))
+            if (($(this).hasClass("colorBlue") || $(this).hasClass("colorRed") || $(this).hasClass("colorGreen")))
                 var colorClass = $("input:radio[name='color']:checked").val();
             $(newItem).addClass(colorClass);
 
