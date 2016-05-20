@@ -72,10 +72,10 @@ Level Completed: <input type="text" name="level" readonly><br>
 
 
 
-		<div class="formGroup">
-			<input type="radio" name="color" value="colorRed"  ng-model="color" checked="checked">Red&nbsp
-			<input type="radio" name="color" value="colorGreen"ng-model="color">Green&nbsp
-			<input type="radio" name="color" value="colorBlue"ng-model="color">Blue&nbsp
+		<div class="formGroup radio-toolbar">
+			<label><input id="redRadio" class ="custom" type="radio" name="color" value="colorRed"  ng-model="color" checked="checked">Red</label>
+			<label><input id="greenRadio"class ="custom" type="radio" name="color" value="colorGreen"ng-model="color">Green</label>
+			<label><input id="blueRadio"class ="custom" type="radio" name="color" value="colorBlue"ng-model="color">Blue&nbsp</label>
 			<button id="input_click" class="verify">verify here</button>
 			<button id="clue_click" class="verify">give me clue</button>
 		</div>
