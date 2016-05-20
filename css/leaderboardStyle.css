@@ -1,5 +1,4 @@
-body{
-	min-width:480px; /* suppose you want minimun width of 1000px */
+@@ -3,159 +3,30 @@ body{
 	width: auto !important;  /* Firefox will set width as auto */
 	width:480px;             /* As IE ignores !important it will set width as 1000px; */
 	background-image: url("../images/carbon.png");
@@ -51,6 +50,7 @@ width:50px;
 }
 #start_click {
 display:inline;
+	color: #ffffff;
 }
 
 .trash{
@@ -105,6 +105,11 @@ body{
 }  
 .formGroup{
 	text-align:center;
+h1 {
+	font-family: Verdana;
+	font-weight: normal;
+	color: #ffffff;
+	text-align: center;
 }
 
 
@@ -123,6 +128,14 @@ body{
     -webkit-border-radius: 5px;
     background: rgba(0,0,0,0.2); 
     -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.5); 
+#leaderboard {
+	margin-left: auto;
+	margin-right: auto;
+	font-family: Verdana;
+	font-weight: normal;
+    color: #ffffff;
+	border: 1px solid white;
+	text-align: center;
 }
 
 #readyBtn {
@@ -158,4 +171,11 @@ body{
 	line-height:1;
 	margin:0px;
 	padding:0px;
+table, th, td {
+	margin-left: auto;
+	margin-right: auto;
+    color: #ffffff;
+	text-align: center;
+	border: 1px solid white;
 }
+\ No newline at end of file
