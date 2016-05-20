@@ -1,38 +1,40 @@
+<!--Group 11-->
+<!--This is the main game page which has all the HTML panels-->
 <!DOCTYPE html>
 <html lang="en" ng-app="" ng-init="level='0';color='colorRed';lives=3">
 <head>
     <meta charset="UTF-8"/>
     <title>ShapeScroller</title>
-
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="js/jquery.ui.touch-punch.min.js"></script>
     <script src="js/jquery.countdown360.min.js"></script>
 
-
+    <!--CSS-->
     <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 
 </head>
 <body>
-
+<!--Main Panel showing the start buttons-->
 <div id=mainPanel>
     <img src="images/logo.png"><br>
     <button class="button" id="play">Play</button>
     <button class="button" id="tutorial">Tutorial</button>
     <button class="button" id="settings">Settings</button>
 </div>
-
+<!--Changes settings panel-->
 <div id=settingsPanel>
     <button class="button" id="music">Settings</button>
     <button class="button" id="border">Color Blind Border</button>
     <button class="button" id="noborder">Normal Border</button>
 </div>
-
+<!--stats panel, shows live and level-->
 <div id="stats">
     <span id="lives">lives not set</span>
     <span id="levelCounter">level not set</span>
 </div>
+<!--gameover input for the leaderboard-->
 <div id="gameOver">
     <p>game over sorry, submit your high score below</p>
 
@@ -45,6 +47,7 @@
         <input type="submit">
     </form>
 </div>
+<!--Has the random shapes-->
 <div id="randomGenerator">
     <div id="countdown">
         <button id="start_click">Skip Countdown</button>
@@ -60,7 +63,7 @@
 
     </div>
 </div>
-
+<!--panel for dragging shapes onto-->
 <div id="input">
     <div class="row">
 
@@ -70,7 +73,7 @@
 
     </div>
 
-
+<!--where the radiobuttons to change shape colors are-->
     <div class="formGroup radio-toolbar">
         <label><input id="redRadio" class="custom" type="radio" name="color" value="colorRed" ng-model="color"
                       checked="checked">Red</label>
@@ -82,7 +85,7 @@
 
 
     <br>
-
+<!--shapes to drag into the rows-->
     <div id="init">
         <span id="shapelist3" class=" list trash "></span>
 
