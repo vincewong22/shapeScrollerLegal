@@ -7,6 +7,7 @@
 Welcome <?php echo $_POST["name"]; ?><br>
 Your email address is: <?php echo $_POST["email"]; ?><br>
 Your level achieved: <?php echo $_POST["level"]; ?><br>
+
 <h1>LEADERBOARD</h1>
 <?php
 
@@ -14,10 +15,10 @@ Your level achieved: <?php echo $_POST["level"]; ?><br>
 $hostname = 'localhost';
 
 /*** mysql username ***/
-$username = 'gofiuawo_vince';
+$username = 'root';
 
 /*** mysql password ***/
-$password = '101010';
+$password = '';
 
 $dbname = "gofiuawo_leaderboard";
 // Create connection
@@ -59,7 +60,7 @@ if ($conn->query($sql) === TRUE) {
 
 $sql = "SELECT id, firstname, email,reg_date,level 
 		FROM LeaderBoard
-		ORDER BY level DESC, reg_date ASC
+		ORDER BY level DESC, reg_date DESC
 		"
 		;
 $result = $conn->query($sql);
