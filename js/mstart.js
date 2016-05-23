@@ -4,6 +4,11 @@ var level_shapes = [[], [], []], user_shapes = [[], [], []];
 var level = 1;
 var lives = 3;
 var showInput = true;
+
+var usedTimer = false;
+var usedClue = false;
+var incorrect = true;
+var INCORRECT_LEVEL = 2;
 //turn off non essential panels
 $(document).ready(function () {
     $("#randomGenerator").toggle();
@@ -16,6 +21,20 @@ $(document).ready(function () {
     startmain();
 
 });//end of ready
+
+function setAchievment(){
+//never used timer and got past level 3
+//used no clues and got past level 3
+//no incorrects past level 5
+if(level > 1 && !usedTimer)
+	$("#award1").html('award 1 gained, never used timer and got past level 3');
+if(level > 1 && !usedClue)
+	$("#award2").html('award 2 gained, used no clues and got past level 3');
+if(level > 1 && !incorrect)
+	$("#award3").html('award 3 gained, 5 in a row -no incorrets past level 5');
+}
+
+
 
 function playMusic(){
  var audioElement = document.createElement('audio');
@@ -79,13 +98,17 @@ function playGame() {
     });
 //button that checks the
     $("#start_click").click(function () {
-        loadInput();
+		
+		$("#input").show();
+        loadInput();	
     });
     $("#input_click").click(function () {
 		$("#input").toggle();
 		user_shapes = getUserContent(4);
 	
         if (user_shapes.toString() == level_shapes.toString()) {
+			if(level == INCORRECT_LEVEL)
+				incorrect = false;
 			//$("message").innerHTML("no match");
             level++;
             generateBoard(level);
@@ -99,6 +122,7 @@ function playGame() {
             updateCounters();
         }
         else {
+			
             //var helpTip = localStorage.getItem("level shapes user");
 			$("#messageBox").toggle();
 			$("#input").hide();
@@ -109,6 +133,7 @@ function playGame() {
         }
     });
     $("#clue_click").click(function () {
+		usedClue = true;
         if (lives == 0) {
 
             gameOver();
@@ -167,7 +192,8 @@ function updateLives() {
 }
 //ends game
 function gameOver() {
-	$("#messageBox").toggle();
+	setAchievment();
+	$("#messageBox").hide();
     $("#lives").html("lives: 0");
     $("#gameOver").slideDown();
     $("#randomGenerator").remove();
@@ -182,10 +208,11 @@ function updateCounters() {
 }
 //hide generation panels when input is called by timer
 function hideInput() {
+	usedTimer = true;
     if (lives != 0)
-        $("#randomGenerator").slideUp();
+        $("#randomGenerator").hide();
 	if(showInput)
-		$("#input").slideDown();
+		$("#input").show();
 }
 //starts off timer
 function startTimer() {
@@ -196,7 +223,7 @@ function startTimer() {
         fontColor: '#FFFFFF',
         autostart: false,
         onComplete: function () {
-            hideInput()
+            gameOver();
             //window.loadInput()
 
             // window.location = "input.html"
