@@ -50,7 +50,7 @@ width:50px;
 	position: relative;
 }
 #start_click {
-display:inline;
+position: relative;
 }
 
 .trash{
@@ -136,6 +136,7 @@ button {
   margin: 0;
   outline: 0;
   padding: 12px 20px;
+  margin-bottom:10px;
   transition: all .1s linear;
 }
 button:active {
@@ -173,8 +174,10 @@ label{
     
 }
 #start_click{
+	 margin-top:15px;
 	vertical-align:top;
-font-size: 2.5em;
+	position: relative;
+	font-size:2.5em;
 }
 #stats{
 	vertical-align:top;
@@ -182,4 +185,15 @@ font-size: 2em;
 }
 #mainPanel{
 	text-align:center;
+}
+#music_play{
+margin-top: 4px;
+font-size: .5em;
+ background: red;
+}
+
+#music_pause{
+margin-top: 4px;
+font-size: .5em;
+ background: green;
 }

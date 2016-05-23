@@ -3,7 +3,7 @@ var id = [];
 var level_shapes = [[], [], []], user_shapes = [[], [], []];
 var level = 1;
 var lives = 3;
-
+var showInput = true;
 //turn off non essential panels
 $(document).ready(function () {
     $("#randomGenerator").toggle();
@@ -12,20 +12,41 @@ $(document).ready(function () {
     $("#gameOver").toggle();
     $("#stats").toggle();
     $("#countdown").toggle();
-
+	$("#messageBox").toggle();
     startmain();
 
 });//end of ready
 
+function playMusic(){
+ var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', 'sounds/FromHere.ogg');
+        audioElement.setAttribute('autoplay', 'autoplay');
+        //audioElement.load()
+
+        $.get();
+
+        audioElement.addEventListener("load", function() {
+            audioElement.play();
+        }, true);
+
+        $('.play').click(function() {
+            audioElement.play();
+        });
+
+        $('.pause').click(function() {
+            audioElement.pause();
+        });
+}
+
 //starts game off
 function startmain() {
-
+	
     $("#play").click(function () {
+		playMusic();
         $("#randomGenerator").toggle();
         $("#countdown").toggle();
         $("#mainPanel").toggle();
         $("#input").toggle();
-
         $("#stats").toggle();
         $("#countdown").toggle();
         playGame();
@@ -52,19 +73,24 @@ function playGame() {
 
         window.location.href = "start.html";
     });
+	$("#closeMessage").click(function () {
+		$("#messageBox").toggle();
+        $("#input").toggle();
+    });
 //button that checks the
     $("#start_click").click(function () {
         loadInput();
     });
     $("#input_click").click(function () {
-        user_shapes = getUserContent(4);
-
-
+		$("#input").toggle();
+		user_shapes = getUserContent(4);
+	
         if (user_shapes.toString() == level_shapes.toString()) {
+			//$("message").innerHTML("no match");
             level++;
             generateBoard(level);
-            if (lives != 0)
-                $("#input").slideUp();
+            //if (lives != 0)
+              //  $("#input").slideUp();
             $("#shapelist4").empty();
             $("#shapelist5").empty();
             $("#shapelist6").empty();
@@ -74,7 +100,11 @@ function playGame() {
         }
         else {
             //var helpTip = localStorage.getItem("level shapes user");
-            alert("no match");
+			$("#messageBox").toggle();
+			$("#input").hide();
+			showInput = false;
+			$("#message").html('no match');
+            //alert("no match");
             updateLives();
         }
     });
@@ -85,7 +115,8 @@ function playGame() {
         }
         else {
             $("#randomGenerator").slideDown();
-            $("#input").slideUp();
+			
+           $("#input").toggle();
             startTimer();
             updateLives();
         }
@@ -94,9 +125,6 @@ function playGame() {
     window.loadInput = function () {
         level_shapes = getUserContent(0);
         hideInput();
-        //localStorage.setItem("level_shapes",level_shapes.toString());
-        //localStorage.setItem("level shapes user","row1="+level_shapes[0].toString()+"\nrow2="+level_shapes[1].toString()+"\nrow3="+level_shapes[2].toString())
-        //window.location.href = "input.html";
     }
 
     //gets the shapes from the 3 lists
@@ -118,7 +146,6 @@ function playGame() {
                 console.log(this.id + myClass);
                 shapeArray[j].push(this.id + myClass);
             });
-
         }
         return shapeArray;
     }
@@ -140,6 +167,7 @@ function updateLives() {
 }
 //ends game
 function gameOver() {
+	$("#messageBox").toggle();
     $("#lives").html("lives: 0");
     $("#gameOver").slideDown();
     $("#randomGenerator").remove();
@@ -156,7 +184,8 @@ function updateCounters() {
 function hideInput() {
     if (lives != 0)
         $("#randomGenerator").slideUp();
-    $("#input").slideDown();
+	if(showInput)
+		$("#input").slideDown();
 }
 //starts off timer
 function startTimer() {

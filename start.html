@@ -16,7 +16,14 @@
 
 </head>
 <body>
+
 <!--Main Panel showing the start buttons-->
+<div id="settings">
+
+</div>
+
+
+
 <div id=mainPanel>
     <img src="images/logo.png"><br>
     <button class="button" id="play">Play</button>
@@ -33,7 +40,16 @@
 <div id="stats">
     <span id="lives">lives not set</span>
     <span id="levelCounter">level not set</span>
+	<button id="music_play"class="play">Play</button>
+
+<button id="music_pause"class="pause">Stop</button>
 </div>
+
+<div id="messageBox">
+<p id="message">not set</p>
+<button class="button" id="closeMessage">Close</button>
+</div>
+
 <!--gameover input for the leaderboard-->
 <div id="gameOver">
     <p>game over sorry, submit your high score below</p>
@@ -96,6 +112,7 @@
 
 
 </div>
+
 <script src="js/mstart.js"></script>
 </body>
 </html>
