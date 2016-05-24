@@ -89,6 +89,7 @@ function playMusic(){
  var audioElement = document.createElement('audio');
         audioElement.setAttribute('src', 'sounds/FromHere.ogg');
         audioElement.setAttribute('autoplay', 'autoplay');
+        audioElement.setAttribute('loop', 'loop');
         //audioElement.load()
 
         $.get();
