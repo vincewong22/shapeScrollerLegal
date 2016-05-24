@@ -12,8 +12,8 @@
     <script src="js/jquery.countdown360.min.js"></script>
 
     <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
-
+   <!--  <link rel="stylesheet" type="text/css" href="css/myStyle.css">
+	<link id="dynamic_css" rel="stylesheet" type="text/css" href="FILE"> -->
 </head>
 <body>
 
@@ -38,10 +38,12 @@
 <!--stats panel, shows live and level-->
 <div id="stats">
     <span id="lives">lives not set</span>
+	<span id="hearts"></span>
     <span id="levelCounter">level not set</span>
+	<div>
 	<button id="music_play"class="play">Play</button>
-
-<button id="music_pause"class="pause">Stop</button>
+	<button id="borderChange"class="pause">Stop</button>
+	</div>
 </div>
 
 <div id="messageBox">
@@ -101,8 +103,10 @@
                       checked="checked">Red</label>
         <label><input id="greenRadio" class="custom" type="radio" name="color" value="colorGreen" ng-model="color">Green</label>
         <label><input id="blueRadio" class="custom" type="radio" name="color" value="colorBlue" ng-model="color">Blue&nbsp</label>
+		<div>
         <button id="input_click" class="verify">verify here</button>
         <button id="clue_click" class="verify">give me clue</button>
+		</div>
     </div>
 
 

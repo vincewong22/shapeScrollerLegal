@@ -22,15 +22,32 @@ $(document).ready(function () {
 
 });//end of ready
 
+function updateStyleSheet(filename) {
+ 
+    newstylesheet = "css/style_" + filename + ".css";
+    if ($("#dynamic_css").length == 0) {
+        $("head").append("<link>")
+        css = $("head").children(":last");
+        css.attr({
+          id: "dynamic_css",
+          rel:  "stylesheet",
+          type: "text/css",
+          href: newstylesheet
+        });
+    } else {
+        $("#dynamic_css").attr("href",newstylesheet);
+    }
+ 
+}
 function setAchievment(){
 //never used timer and got past level 3
 //used no clues and got past level 3
 //no incorrects past level 5
-if(level > 1 && !usedTimer)
+if(level > 3 && !usedTimer)
 	$("#award1").html('award 1 gained, never used timer and got past level 3');
-if(level > 1 && !usedClue)
+if(level > 3 && !usedClue)
 	$("#award2").html('award 2 gained, used no clues and got past level 3');
-if(level > 1 && !incorrect)
+if(level > 5 && !incorrect)
 	$("#award3").html('award 3 gained, 5 in a row -no incorrets past level 5');
 }
 
@@ -49,17 +66,20 @@ function playMusic(){
         }, true);
 
         $('.play').click(function() {
-            audioElement.play();
+            if (audioElement.paused == false) {
+      audioElement.pause();
+      //alert('music paused');
+  } else {
+      audioElement.play();
+      //alert('music playing');
+  }
         });
 
-        $('.pause').click(function() {
-            audioElement.pause();
-        });
 }
 
 //starts game off
 function startmain() {
-	
+	updateStyleSheet('normal');
     $("#play").click(function () {
 		playMusic();
         $("#randomGenerator").toggle();
@@ -102,6 +122,10 @@ function playGame() {
 		$("#input").show();
         loadInput();	
     });
+	$("#borderChange").click(function(){
+		borderChange();
+		updateStyleSheet('blind');
+	});
     $("#input_click").click(function () {
 		$("#input").toggle();
 		user_shapes = getUserContent(4);
@@ -135,7 +159,7 @@ function playGame() {
     $("#clue_click").click(function () {
 		usedClue = true;
         if (lives == 0) {
-
+			
             gameOver();
         }
         else {
@@ -152,6 +176,11 @@ function playGame() {
         hideInput();
     }
 
+	function borderChange(){
+	$('.colorRed').css('border-style','solid');
+		$('.colorGreen').css('border-style','solid');
+		$('.colorBlue').css('border-style','solid');
+	}
     //gets the shapes from the 3 lists
     //offset for shapelists 0,1,2 and shaplists 4,5,6
     function getUserContent(offset) {
@@ -181,17 +210,22 @@ function playGame() {
 }
 //updates the stats
 function updateLives() {
+	
     if (lives == 1) {
         lives = 0;
         gameOver();
     }
     else {
         lives--;
-        $("#lives").html("lives: " + lives);
+		drawHearts();
+        $("#lives").html("Lives: " + lives);
     }
 }
 //ends game
 function gameOver() {
+	$("#hearts").empty();
+	for(i=0; i <3;i++)
+		$("#hearts").append("<img src='images/whiteHeart.png'/>");
 	setAchievment();
 	$("#messageBox").hide();
     $("#lives").html("lives: 0");
@@ -200,11 +234,21 @@ function gameOver() {
     $("#input").remove();
     $('input[name=level]').val(level);
 }
-
+function drawHearts(){
+$("#hearts").empty();
+	for(i=0; i <lives; i++)
+		$("#hearts").append("<img src='images/heart.png'/>");
+	var whiteLives = 3 - lives;
+	for(i=0; i <whiteLives;i++)
+		$("#hearts").append("<img src='images/whiteHeart.png'/>");
+			
+}
 //updates lives and level counters
 function updateCounters() {
-    $("#lives").html("lives: " + lives);
-    $("#levelCounter").html("level: " + level);
+	//$("#stats").append("<img src="images/heart.png">");
+	drawHearts();
+    $("#lives").html("Lives: " + lives);
+    $("#levelCounter").html("Level: " + level);
 }
 //hide generation panels when input is called by timer
 function hideInput() {
@@ -216,18 +260,14 @@ function hideInput() {
 }
 //starts off timer
 function startTimer() {
-
+	seconds = (level *2) +7;
     var countdown = $("#countdown").countdown360({
         radius: 40,
-        seconds: 10,
+        seconds: seconds,
         fontColor: '#FFFFFF',
         autostart: false,
         onComplete: function () {
-            gameOver();
-            //window.loadInput()
-
-            // window.location = "input.html"
-
+           loadInput();
         }
         <!--onComplete  : function() { console.log('done') } -->
     });
@@ -240,10 +280,11 @@ function init() {
         helper: "clone",
         connectToSortable: ".list",
         drop: function (event, ui) {
-
+		
         }
     });
     sortList();
+	
 }
 //lets you customize what shapes to start game off with
 function decideShape(numShapes) {
@@ -313,7 +354,6 @@ function decideNumShapes() {
         return 3;
     return 1;
 }
-
 function sortList() {
     //Connect empty sorted lists with draggable elements
     $(".list").sortable({
@@ -332,9 +372,10 @@ function sortList() {
             if (($(this).hasClass("colorBlue") || $(this).hasClass("colorRed") || $(this).hasClass("colorGreen")))
                 var colorClass = $("input:radio[name='color']:checked").val();
             $(newItem).addClass(colorClass);
-
+			
         },
         beforeStop: function (event, ui) {
+			
             newItem = ui.item;
         }
     });
