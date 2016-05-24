@@ -49,16 +49,37 @@ $('input[name=award2]').val(0);
 $('input[name=award3]').val(0);	
 	
 if(level > 2 && !usedTimer){
+	
 	$("#award1").html('award 1 gained, never used timer and got past level 2');
 	$('input[name=award1]').val(1);
+	$('#award1').append('<img src=images/award1.jpg>');
+}
+else{
+	
+	$("#award1").html('Sorry, award 1 still locked, you used timer and got past level 2');
+	$('#award1').append('<img src=images/award1_locked.jpg>');
 }
 if(level > 2 && !usedClue){
+	
 	$("#award2").html('award 2 gained, used no clues and got past level 2');
 	$('input[name=award2]').val(1);
+	$('#award2').append('<img src=images/award2.jpg>');
+}
+else{
+	
+	$("#award2").html('Sorry, award 2 still locked, used no clues and got past level 2');
+	$('#award2').append('<img src=images/award2_locked.jpg>');
 }
 if(level > 2 && !incorrect){
+	
 	$("#award3").html('award 3 gained, 5 in a row -no incorrets past level 2');
 	$('input[name=award3]').val(1);
+	$('#award3').append('<img src=images/award3.jpg>');
+}
+else{
+	
+	$("#award3").html('Sorry, award 3 still locked, 5 in a row -no incorrets past level 2');
+	$('#award3').append('<img src=images/award3_locked.jpg>');
 }
 }
 
@@ -225,7 +246,7 @@ function playGame() {
         }
         return shapeArray;
     }
-
+	
     startTimer();
     updateCounters();
     $("#input").slideUp();
@@ -274,7 +295,6 @@ function updateCounters() {
 }
 //hide generation panels when input is called by timer
 function hideInput() {
-	usedTimer = true;
     if (lives != 0)
         $("#randomGenerator").hide();
 	if(showInput)
@@ -289,6 +309,7 @@ function startTimer() {
         fontColor: '#FFFFFF',
         autostart: false,
         onComplete: function () {
+			usedTimer =true;
            loadInput();
         }
         <!--onComplete  : function() { console.log('done') } -->

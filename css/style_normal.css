@@ -213,7 +213,14 @@ text-align:center;
 #countdown{
 text-align: center;
 }
-
+#gameOver{
+text-align: center;
+}
+#messageBox{
+	font-size:3em;
+	padding-top:1em;
+text-align: center;
+}
 /* The switch - the box around the slider */
 .switch {
   vertical-align: top;
