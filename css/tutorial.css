@@ -1,0 +1,14 @@
+#title{
+text-size:10em !important;
+}
+body{
+text-align: center;
+}
+.carousel-inner{
+	  width:auto;
+  max-height: 400px !important;
+}
+
+#myCarousel{
+width:auto;
+}
