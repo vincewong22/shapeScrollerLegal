@@ -16,34 +16,35 @@
 	<link id="dynamic_css" rel="stylesheet" type="text/css" href="FILE"> -->
 </head>
 <body>
-
+<div id=settingsPanel>
+    <button id="music_play"class="play">Toggle Background Music</button>
+	Visually Impaired Mode
+		<label class="switch">
+	  <input type="checkbox">
+	  <span class="slider round"></span>
+	</label>
+</div>
 <!--Main Panel showing the start buttons-->
-<div id="settings">
-
-
-
 
 <div id=mainPanel>
     <img src="images/logo.png"><br>
     <button class="button" id="play">Play</button>
     <button class="button" id="tutorial">Tutorial</button>
-    <button class="button" id="settings">Settings</button>
 </div>
 <!--Changes settings panel-->
-<div id=settingsPanel>
-    <button class="button" id="music">Settings</button>
-    <button class="button" id="border">Color Blind Border</button>
-    <button class="button" id="noborder">Normal Border</button>
-</div>
+
 <!--stats panel, shows live and level-->
 <div id="stats">
+	
     <span id="lives">lives not set</span>
 	<span id="hearts"></span>
     <span id="levelCounter">level not set</span>
-	<div>
-	<button id="music_play"class="play">Play</button>
-	<button id="borderChange"class="pause">Stop</button>
-	</div>
+	<img src="images/settings.png" id="settings"></img>
+	<!-- Rounded switch -->
+	
+	
+	
+	
 </div>
 
 <div id="messageBox">
@@ -61,6 +62,9 @@
         Name: <input type="text" name="name" required><br>
         E-mail: <input type="text" name="email" required><br>
         Level Completed: <input type="text" name="level" readonly><br>
+		<input type="hidden" name="award1" value="false">
+		<input type="hidden" name="award2" value="false">
+		<input type="hidden" name="award3" value="false">
         <input type="submit">
     </form>
 		<div id="achievements">
@@ -104,8 +108,9 @@
         <label><input id="greenRadio" class="custom" type="radio" name="color" value="colorGreen" ng-model="color">Green</label>
         <label><input id="blueRadio" class="custom" type="radio" name="color" value="colorBlue" ng-model="color">Blue&nbsp</label>
 		<div>
-        <button id="input_click" class="verify">verify here</button>
-        <button id="clue_click" class="verify">give me clue</button>
+        <button id="input_click" class="verify">Verify here</button>
+        <button id="clue_click" class="verify">Give me clue</button>
+		
 		</div>
     </div>
 

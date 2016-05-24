@@ -22,6 +22,7 @@ $(document).ready(function () {
 
 });//end of ready
 
+
 function updateStyleSheet(filename) {
  
     newstylesheet = "css/style_" + filename + ".css";
@@ -43,12 +44,22 @@ function setAchievment(){
 //never used timer and got past level 3
 //used no clues and got past level 3
 //no incorrects past level 5
-if(level > 3 && !usedTimer)
-	$("#award1").html('award 1 gained, never used timer and got past level 3');
-if(level > 3 && !usedClue)
-	$("#award2").html('award 2 gained, used no clues and got past level 3');
-if(level > 5 && !incorrect)
-	$("#award3").html('award 3 gained, 5 in a row -no incorrets past level 5');
+$('input[name=award1]').val(0);
+$('input[name=award2]').val(0);
+$('input[name=award3]').val(0);	
+	
+if(level > 2 && !usedTimer){
+	$("#award1").html('award 1 gained, never used timer and got past level 2');
+	$('input[name=award1]').val(1);
+}
+if(level > 2 && !usedClue){
+	$("#award2").html('award 2 gained, used no clues and got past level 2');
+	$('input[name=award2]').val(1);
+}
+if(level > 2 && !incorrect){
+	$("#award3").html('award 3 gained, 5 in a row -no incorrets past level 2');
+	$('input[name=award3]').val(1);
+}
 }
 
 
@@ -92,7 +103,9 @@ function startmain() {
     });
 
 }
-
+function showSettings(){
+$("#settingsPanel").slideToggle();
+}
 //initial game loop
 function playGame() {
 
@@ -103,6 +116,19 @@ function playGame() {
     }
 //Set all elements with init id with block class drag enabled
     init();
+	
+	 $('input[type="checkbox"]').click(function(){
+            if($(this).is(":checked")){
+                updateStyleSheet('blind');
+            }
+            else if($(this).is(":not(:checked)")){
+                updateStyleSheet('normal');
+            }
+        });
+		
+		 $("#settings").click(function () {
+        showSettings();
+    });
 //button that checks the
     $("#click").click(function () {
         getListContent();
@@ -123,7 +149,7 @@ function playGame() {
         loadInput();	
     });
 	$("#borderChange").click(function(){
-		borderChange();
+		//borderChange();
 		updateStyleSheet('blind');
 	});
     $("#input_click").click(function () {
@@ -176,11 +202,7 @@ function playGame() {
         hideInput();
     }
 
-	function borderChange(){
-	$('.colorRed').css('border-style','solid');
-		$('.colorGreen').css('border-style','solid');
-		$('.colorBlue').css('border-style','solid');
-	}
+	
     //gets the shapes from the 3 lists
     //offset for shapelists 0,1,2 and shaplists 4,5,6
     function getUserContent(offset) {
