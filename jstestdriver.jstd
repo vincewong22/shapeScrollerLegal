@@ -1,0 +1,6 @@
+load:
+  - src/sampleScript.js
+  - js/leaderboard.js
+
+test:
+  - test/sampleScriptTest.js
