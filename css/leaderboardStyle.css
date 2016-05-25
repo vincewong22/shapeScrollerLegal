@@ -33,6 +33,26 @@ tbody {
 	overflow-x: hidden;
 }
 
+td {
+	word-wrap: break-word;
+}
+
 #buttons {
 	text-align: center;
+}
+
+.buttons {
+	text-align: center;
+	border: 0;
+	background: #0087cc;
+	border-radius: 4px;
+	box-shadow: 0 5px 0 #006599;
+	color: #fff;
+	cursor: pointer;
+	font: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 12px 20px;
+	margin-bottom:10px;
+	transition: all .1s linear;
 }

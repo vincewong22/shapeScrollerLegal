@@ -126,8 +126,8 @@ $conn->close(); //end connection
 <!--ENDING PHP TAG-->
 
 <div id="buttons">
-<button type="button"  onclick="playAgain()">Play Again</button>
-<button type="button"  onclick="mainMenu()">Main Menu</button>
+<button type="button" class="buttons" onclick="playAgain()">Play Again</button>
+<button type="button" class="buttons" onclick="mainMenu()">Main Menu</button>
 </div>
 
 </body>
