@@ -4,13 +4,7 @@
 </head>
 <body>
 
-Welcome <?php echo $_POST["name"]; ?><br>
-Your email address is: <?php echo $_POST["email"]; ?><br>
-Your level achieved: <?php echo $_POST["level"]; ?><br>
-Your award1 achieved: <?php echo $_POST["award1"]; ?><br>
-Your award2 achieved: <?php echo $_POST["award2"]; ?><br>
-Your award3 achieved: <?php echo $_POST["award3"]; ?><br>
-<h1>LEADERBOARD</h1>
+<button class="button" id="leaderboardButton" onclick="window.location.href='start.html'">Return to Main Menu</button>
 <?php
 
 /*** mysql hostname ***/
@@ -51,17 +45,6 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
-
-$sql = "INSERT INTO LeaderBoard2 (firstname, lastname,email,level,award1,award2,award3)
-VALUES ('" . $_POST['name'] . "', 'Doe', '" . $_POST['email'] . "','" . $_POST['level'] . "','" . $_POST['award1'] . "','" . $_POST['award2'] . "','" . $_POST['award3'] . "');";
-
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully..... <br>";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
 $sql = "SELECT id, firstname, email,reg_date,level,award1,award2,award3 
 		FROM LeaderBoard2
 		ORDER BY level DESC, reg_date DESC
@@ -71,10 +54,8 @@ $rank = 1;
 
 if ($result->num_rows > 0) {
     // output data of each row
-	echo'<div class="container table-responsive">';
-	echo'<div class="row">';
     echo '<div id="leaderboard">';
-    echo'<table class="table table-bordered">';
+    echo '<table>';
     echo '<tr>';
     echo '<th>Rank</th>';
     echo '<th>Name</th>';
@@ -110,20 +91,15 @@ if ($result->num_rows > 0) {
         echo "</tr>";
         $rank++;
     }
-    echo'</tbody>';
-	echo'</table>';
-	echo'</div>';
-	echo'</div>';
+    echo '</table>';
+    echo '</div>';
 } else {
     echo "0 results";
 }
 
 $conn->close();
 ?>
-<div id="buttons">
-<button type="button"  onclick="playAgain()">Play Again</button>
-<button type="button"  onclick="mainMenu()">Main Menu</button>
-</div>
+
 
 </body>
 </html>
