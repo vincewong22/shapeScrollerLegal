@@ -18,6 +18,7 @@ $(document).ready(function () {
     $("#stats").toggle();
     $("#countdown").toggle();
 	$("#messageBox").toggle();
+    playMusic();
     startmain();
 
 });//end of ready
@@ -100,12 +101,12 @@ function playMusic(){
 
         $('.play').click(function() {
             if (audioElement.paused == false) {
-      audioElement.pause();
-      //alert('music paused');
-  } else {
-      audioElement.play();
-      //alert('music playing');
-  }
+                audioElement.pause();
+                //alert('music paused');
+            } else {
+                audioElement.play();
+                //alert('music playing');
+            }
         });
 
 }
@@ -114,7 +115,6 @@ function playMusic(){
 function startmain() {
 	updateStyleSheet('normal');
     $("#play").click(function () {
-		playMusic();
         $("#randomGenerator").toggle();
         $("#countdown").toggle();
         $("#mainPanel").toggle();
