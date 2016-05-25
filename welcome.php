@@ -71,8 +71,10 @@ $rank = 1;
 
 if ($result->num_rows > 0) {
     // output data of each row
+	echo'<div class="container table-responsive">';
+	echo'<div class="row">';
     echo '<div id="leaderboard">';
-    echo '<table>';
+    echo'<table class="table table-bordered">';
     echo '<tr>';
     echo '<th>Rank</th>';
     echo '<th>Name</th>';
@@ -108,15 +110,20 @@ if ($result->num_rows > 0) {
         echo "</tr>";
         $rank++;
     }
-    echo '</table>';
-    echo '</div>';
+    echo'</tbody>';
+	echo'</table>';
+	echo'</div>';
+	echo'</div>';
 } else {
     echo "0 results";
 }
 
 $conn->close();
 ?>
-
+<div id="buttons">
+<button type="button"  onclick="playAgain()">Play Again</button>
+<button type="button"  onclick="mainMenu()">Main Menu</button>
+</div>
 
 </body>
 </html>
