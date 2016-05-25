@@ -8,20 +8,20 @@ body{
 }
 
 .ui-draggable{
-padding:5px; 
-margin: 10px;
-border:90px solid black;
+	padding:5px; 
+	margin: 10px;
+	border:90px solid black;
 }
 .ui-draggable-dragging{ 
-border: 5px solid black;
- width:64px;
+	border: 5px solid black;
+	width:64px;
 	height:64px;
 }
 .list{
-display:block;
-padding:10px;margin: 10px;
-border:2px solid black;
-width:50px;
+	display:block;
+	padding:10px;margin: 10px;
+	border:2px solid black;
+	width:50px;
 }
 .lista{
 	display:block;
@@ -53,7 +53,7 @@ width:50px;
 	position: relative;
 }
 #start_click {
-position: relative;
+	position: relative;
 }
 
 .trash{
@@ -69,7 +69,7 @@ position: relative;
 	opacity: 50;
 }
 #init{
-text-align:center;
+	text-align:center;
 } 
 body{
 	background-color: #424242;
@@ -161,8 +161,8 @@ button:active {
 }
 label{
 	display: inline-block;
-  vertical-align: bottom;
-  font-size:2em;
+  	vertical-align: bottom;
+  	font-size:2em;
 }
 .custom {
 	 
@@ -177,41 +177,41 @@ label{
     
 }
 #start_click{
-	 margin-top:15px;
+	margin-top:15px;
 	vertical-align:top;
 	position: relative;
 	font-size:2.5em;
 }
 #stats{
 	vertical-align:top;
-font-size: 2em;
+	font-size: 2em;
 }
 #mainPanel{
 	text-align:center;
 }
 #music_play{
-margin-top: 4px;
-font-size: 1em;
- background: red;
+	margin-top: 4px;
+	font-size: 1em;
+ 	background: red;
 }
 
 #music_pause{
-margin-top: 4px;
-font-size: .5em;
- background: green;
+	margin-top: 4px;
+	font-size: .5em;
+ 	background: green;
 }
 #stats {
 	text-align: center;
 }
 #settings{
-font-size: .5em;
+	font-size: .5em;
 
 }
 #settingsPanel{
-text-align:center;
+	text-align:center;
 }
 #countdown{
-text-align: center;
+	text-align: center;
 }
 
 /* The switch - the box around the slider */
@@ -231,7 +231,6 @@ text-align: center;
 /* The slider */
 .slider {
   position: absolute;
-  
   cursor: pointer;
   top: 0;
   left: 0;

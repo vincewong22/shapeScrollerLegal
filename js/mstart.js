@@ -102,9 +102,11 @@ function playMusic(){
         $('.play').click(function() {
             if (audioElement.paused == false) {
                 audioElement.pause();
+                document.getElementById("music_play").innerHTML = "UnMute Background Music";
                 //alert('music paused');
             } else {
                 audioElement.play();
+                document.getElementById("music_play").innerHTML = "Mute Background Music";
                 //alert('music playing');
             }
         });
