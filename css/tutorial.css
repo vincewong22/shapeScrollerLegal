@@ -1,14 +1,25 @@
 #tutorialTitle{
+
 color:white;
-}
-body{
-text-align: center;
-}
-.carousel-inner{
-	  width:auto;
-  max-height: 400px !important;
+
 }
 
+
+body{
+
+text-align: center;
+
+
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+ margin-left: auto;
+ margin-right: auto;
+}
+
+
 #myCarousel{
-width:auto;
+
+width:auto
 }

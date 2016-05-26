@@ -394,9 +394,9 @@ function decideNumColors() {
 //pre-condition level must be greater then 0
 function decideNumShapes() {
     console.log("level from num shapes:" + level);
-    if (level > 3)
+    if (level > 5)
         return 2;
-    if (level > 4)
+    if (level > 8)
         return 3;
     return 1;
 }

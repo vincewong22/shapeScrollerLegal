@@ -78,20 +78,20 @@ body{
 	padding: 0;
 }
 .colorRed{
-	border-style:solid;
+	border-style:dotted;
 	border-color: #E53935;
 	border-width: 5px;
 	padding:0px;
 	
 }
 .colorBlue{
-	border-style:solid;
+	border-style:ridge;
 	border-color: #2196F3;
 	border-width: 5px;
 	padding:0px;
 }
 .colorGreen{
-	border-style:solid;
+	border-style:double;
 	border-color: #4CAF50;
 	border-width: 5px;
 	padding:0px;
