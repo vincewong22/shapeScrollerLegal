@@ -366,6 +366,8 @@ function decideColor(numColors) {
 }
 //creates the levels
 function generateBoard(level) {
+	if(level > 2)
+		level = 3;
     var row, shape, styleShape, source, shapeClass;
     for (i = 0; i < level; i++) {
         row = "shapelist" + decideRow();
@@ -386,7 +388,7 @@ function generateBoard(level) {
 //pre-condition level must be greater then 0
 function decideNumColors() {
     console.log("level from num colors:" + level);
-    if (level > 5)
+    if (level > 4)
         return 2;
     return 0;
 }
