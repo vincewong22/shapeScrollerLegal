@@ -64,7 +64,7 @@ if ($conn->query($sql) === TRUE) {
 
 $sql = "SELECT id, firstname, email,reg_date,level,award1,award2,award3 
 		FROM LeaderBoard2
-		ORDER BY level DESC, reg_date DESC
+		ORDER BY level DESC, reg_date ASC
 		";
 $result = $conn->query($sql);
 $rank = 1;
