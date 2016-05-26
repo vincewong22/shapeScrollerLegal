@@ -1,9 +1,9 @@
 body{
-	min-width:450px; 
-	width: auto !important;  
-	width:460px;            
+	min-width:495px;
+	max-width:495px;           
 	background-size: 100% auto;
 	background-image: url("../images/background.png");
+	margin: 0 auto !important; 
 }
 
 .ui-draggable{

@@ -1,9 +1,9 @@
 body{
-	min-width:450px; 
-	width: auto !important;  
-	width:460px;            
+	min-width:495px;
+	max-width:495px;           
 	background-size: 100% auto;
 	background-image: url("../images/background.png");
+	margin: 0 auto !important; 
 }
 
 .ui-draggable{
@@ -13,7 +13,7 @@ body{
 }
 .ui-draggable-dragging{ 
 	border: 5px solid black;
-	width:64px;
+ 	width:64px;
 	height:64px;
 }
 .list{
@@ -126,6 +126,7 @@ body{
     -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.5); 
 }
 button {
+	
   border: 0;
   background: #0087cc;
   border-radius: 4px;
@@ -158,8 +159,8 @@ button:active {
 }
 label{
 	display: inline-block;
-  	vertical-align: bottom;
-  	font-size:2em;
+	vertical-align: bottom;
+	font-size:2em;
 }
 .custom {
     -moz-appearance:none;
@@ -168,9 +169,7 @@ label{
     width:40px;
     height:40px;
     border:5px solid rgba(0,0,0,.4);
-    box-shadow:inset 0 40px 50px rgba(0,0,0,.2);
-	
-    
+    box-shadow:inset 0 40px 50px rgba(0,0,0,.2);   
 }
 #start_click{
 	margin-top:15px;
@@ -194,7 +193,7 @@ label{
 #music_pause{
 	margin-top: 4px;
 	font-size: .5em;
- 	background: green;
+	background: green;
 }
 #stats {
 	text-align: center;
@@ -210,7 +209,14 @@ label{
 #countdown{
 	text-align: center;
 }
-
+#gameOver{
+	text-align: center;
+}
+#messageBox{
+	font-size:3em;
+	padding-top:1em;
+	text-align: center;
+}
 /* The switch - the box around the slider */
 .switch {
   vertical-align: top;

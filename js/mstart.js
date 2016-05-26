@@ -71,15 +71,15 @@ else{
 	$("#award2").html('Sorry, award 2 still locked, used no clues and got past level 2');
 	$('#award2').append('<img src=images/award2_locked.jpg>');
 }
-if(level > 2 && !incorrect){
+if(level > 6 && !incorrect){
 	
-	$("#award3").html('award 3 gained, 5 in a row -no incorrets past level 2');
+	$("#award3").html('award 3 gained, 5 in a row -no incorrets past level 5');
 	$('input[name=award3]').val(1);
 	$('#award3').append('<img src=images/award3.jpg>');
 }
 else{
 	
-	$("#award3").html('Sorry, award 3 still locked, 5 in a row -no incorrets past level 2');
+	$("#award3").html('Sorry, award 3 still locked, 5 in a row -no incorrets past level 5');
 	$('#award3').append('<img src=images/award3_locked.jpg>');
 }
 }
